@@ -25,13 +25,20 @@
     "test": "(cd tree-sitter-markdown && tree-sitter test) && (cd tree-sitter-markdown-inline && tree-sitter test)",
     "build": "(cd tree-sitter-markdown && tree-sitter generate --no-bindings) && (cd tree-sitter-markdown-inline && tree-sitter generate --no-bindings) && node-gyp build"
   },
-  "tree-sitter": [
-    {
-      "scope": "source.md",
-      "injection-regex": "markdown|md",
-      "file-types": [
-        "md"
-      ]
-    }
+  "tree-sitter": [ 
+   	{ 
+      "scope": "text.html.markdown",
+      "path": "tree-sitter-markdown",
+      "file-types": ["md"],
+      "highlights": ["tree-sitter-markdown/queries/highlights.scm"],
+      "injections": ["tree-sitter-markdown/queries/injections.scm"],
+      "injection-regex": "markdown|md"
+	},
+	{
+      "scope": "text.html.markdown.inline",
+      "path": "tree-sitter-markdown-inline",
+      "highlights": ["tree-sitter-markdown-inline/queries/highlights.scm"],
+      "injections": ["tree-sitter-markdown-inline/queries/injections.scm"]
+	}
   ]
 }
